@@ -1,0 +1,123 @@
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Ti</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3, #ff85a2);
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            overflow: hidden;
+            animation: backgroundAnimation 10s infinite alternate;
+        }
+        .container {
+            text-align: center;
+        }
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 2s ease-in-out;
+            transform: scale(0.9);
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: scale(1);
+        }
+        .image-container img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #ff758c;
+            animation: pulse 2s infinite alternate;
+        }
+        .mensaje {
+            font-size: 1.4em;
+            color: #ff758c;
+            font-weight: bold;
+        }
+        #botonSorpresa {
+            background: #ff758c;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s, background 0.3s;
+            font-size: 1.2em;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        #botonSorpresa:hover {
+            background: #ff5a79;
+            transform: scale(1.1);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+        @keyframes backgroundAnimation {
+            from { background: linear-gradient(135deg, #ff758c, #ff7eb3, #ff85a2); }
+            to { background: linear-gradient(135deg, #ff758c, #ff6a95, #ff85b5); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1 id="nombre">Para Ti  ❤️</h1>
+            <div class="image-container">
+                <img src="imagen2.png" alt="-" class="foto">
+            </div>
+            <p class="fecha">Fecha especial: <span id="fecha"> 14 de febrero  del 2024</span></p>
+            <audio controls autoplay loop>
+                <source src="prueva.mpeg" type="audio/mpeg">
+               
+            </audio>
+            <p class="mensaje">Siempre serás especial para mí ❤️</p>
+            <button id="botonSorpresa">Haz clic </button>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("botonSorpresa").addEventListener("click", function() {
+                const mensajes = [
+                    "Eres lo mejor que me ha pasado ❤️",
+                    "Tu sonrisa ilumina mi mundo ✨",
+                    "Cada día a tu lado es un regalo 🎁",
+                    "Eres mi persona favorita en el universo 🌎❤️",
+                    "Te quiero más de lo que las palabras pueden expresar 💕"
+                ];
+                const mensajeAleatorio = mensajes[Math.floor(Math.random() * mensajes.length)];
+                const sorpresa = document.createElement("div");
+                sorpresa.innerText = mensajeAleatorio;
+                sorpresa.style.position = "absolute";
+                sorpresa.style.top = Math.random() * window.innerHeight + "px";
+                sorpresa.style.left = Math.random() * window.innerWidth + "px";
+                sorpresa.style.background = "rgba(255, 255, 255, 0.8)";
+                sorpresa.style.padding = "10px";
+                sorpresa.style.borderRadius = "10px";
+                sorpresa.style.boxShadow = "0 4px 10px rgba(0, 0, 0, 0.2)";
+                sorpresa.style.fontSize = "1.2em";
+                sorpresa.style.fontWeight = "bold";
+                sorpresa.style.color = "#ff758c";
+                sorpresa.style.animation = "fadeIn 1s ease-in-out";
+                document.body.appendChild(sorpresa);
+                setTimeout(() => {
+                    sorpresa.remove();
+                }, 4000);
+            });
+        });
+    </script>
+</body>
+</html>
